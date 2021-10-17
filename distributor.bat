@@ -1,0 +1,2 @@
+@echo off
+for /D %%a in ("C:\Users\Md Ahmadullah Shamim\Downloads\WEBTOONS\webtoons\unholy-blood\*.*") do xcopy /y /d "C:\Users\Md Ahmadullah Shamim\Downloads\WEBTOONS\webtoons\unholy-blood\1\index.html" "%%a\"
