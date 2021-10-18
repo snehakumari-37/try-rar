@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter</title>
+</head>
+
+<body>
+    <!-- Scripts -->
+
+    <!--Getting necessary variables to load images-->
+    <script type="text/javascript">
+        //  Get parent folder filename
+        //  Get root folder (comic_name)
+        let segments = window.location.pathname.split('/');
+        let toDelete = [];
+        for (let i = 0; i < segments.length; i++) {
+            if (segments[i].length < 1) {
+                toDelete.push(i);
+            }
+            for (let i = 0; i < toDelete.length; i++) {
+                segments.splice(toDelete[i], 1);
+                for (let j = i; j < toDelete.length; j++) {
+                    (toDelete[j])--;
+                }
+            }
+        }
+        let filename = segments[segments.length - 1];
+        let series_name = segments[segments.length - 2]
+    </script>
+
+    <!-- Declaring Variables -->
+    <script type="text/javascript">
+        let total_slides = 200
+        let chapter_num = filename
+        let episode_num = chapter_num - 1
+        let fail = "failed to load image"
+    </script>
+
+    <!-- function if file doesFileExist -->
+    <script type="text/javascript">
+        function doesFileExist(urlToFile) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('HEAD', urlToFile, false);
+            xhr.send();
+
+            if (xhr.status == "404") {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+    <!-- load title, hr, load images  -->
+    <center>
+        <!-- Loading Title  -->
+        <div id="titles"></div>
+        <script type="text/javascript">
+            document.getElementById("titles").innerHTML = '<h1>Chapter : ' + chapter_num + ', Episode : ' + episode_num + ' </h1>';
+        </script>
+
+        <!-- line1 -->
+        <hr>
+
+        <!-- Loading images  -->
+        <div id="images"></div>
+        <script type="text/javascript">
+            image_loading: {
+                for (let jpg_num = 0; jpg_num < total_slides; jpg_num++)
+
+                    if (doesFileExist(series_name + ' Ch' + chapter_num + '.' + jpg_num + '.jpg')) {
+
+                        document.getElementById('images').innerHTML = document.getElementById('images').innerHTML + '<img src="' + series_name + ' Ch' + chapter_num + '.' + jpg_num + '.jpg" id="img' + jpg_num + '">';
+                    }
+
+                    else {
+                        break image_loading;
+                    }
+            }
+        </script>
+    </center>
+
+    <!-- Document title -->
+    <script type="text/javascript">
+        document.title = 'Ch-' + chapter_num;
+    </script>
+
+    <!-- background-color -->
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        h1 {
+            background-color: lightgrey;
+            font-size: 40px;
+        }
+    </style>
+</body>
+
+</html>

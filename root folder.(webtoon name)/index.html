@@ -33,7 +33,7 @@
         let total_chapters = 600
 
        index_loading:{
-        for(chapter_num=0; chapter_num<total_chapters; chapter_num++)
+        for(chapter_num=1; chapter_num<total_chapters; chapter_num++)
         if(doesFileExist(chapter_num)){
             document.getElementById("links").innerHTML = document.getElementById("links").innerHTML +'<br>'+'<a href="/unholy-blood/'+chapter_num+'/">Unholy Blood, Chapter '+chapter_num+'</a>';
         }
@@ -47,6 +47,7 @@
     <style>
         a{
             font-size: 20px;
+            text-decoration: none;
         }
         a:link{
             color: red;
